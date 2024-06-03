@@ -1,0 +1,12 @@
+{
+    "version": "1.0.0",
+    "manifest_version": 3,
+    "name": "1Xbet autobot",
+    "description": "",
+    "action": {
+        "default_popup": "js/index.html",
+        "default_title": "1XBET AutoBot"
+    }
+   
+
+}

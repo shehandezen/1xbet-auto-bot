@@ -1,38 +1,293 @@
+@import url('https://fonts.googleapis.com/css2?family=Poetsen+One&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poetsen One", "Roboto", sans-serif;
+}
+
+
 .App {
-  text-align: center;
+    position: relative;
+    width: 500px;
+    height: 100%;
+    border-radius: 15px;
+    border: none;
+   
+    overflow: hidden;
+    overflow-y: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.App .top-card {
+    position: relative;
+    margin-top: 20px;
+   
+    border-radius: 15px;
+    padding: 50px;
+    border: none;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.App .top-card .multiplyer {
+    position: relative;
+    font-size: 55px;
+    font-weight: 500;
+    color: #fff;
+    letter-spacing: 5px;
+    -webkit-text-stroke: 3px #262626;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.App .top-card p {
+    font-size: 14px;
+    color: #002B72;
 }
 
-.App-link {
-  color: #61dafb;
+.App .top-card .multiplyer .x {
+    font-size: 30px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.App .top-card p {
+    position: relative;
+    font-weight: 500;
+    font-size: 20px;
+    color: #002B72;
+}
+
+.App .status-badge {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    padding: 8px 15px;
+    border-radius: 15px;
+    background: #20c997;
+    color: #fff;
+}
+
+.App .thread-summary {
+    position: relative;
+    margin-top: 20px;
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    font-size: 12px;
+}
+
+.App .thread-summary .thread-number {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    padding: 50px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 15px;
+    border: none;
+    font-size: 18px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.App .thread-summary .thread-number p {
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    margin-top: 10px;
+    color: #002B72;
+}
+
+.App .thread-summary .thread-lost {
+    position: relative;
+    width: 150px;
+    padding: 25px auto;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 15px;
+    border: none;
+    font-size: 18px;
+
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.App .thread-summary .thread-lost p {
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    margin-top: 10px;
+    color: #002B72;
+}
+
+.App .thread-summary .total-value {
+    position: relative;
+    width:150px;
+    padding: 25px auto;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 15px;
+    border: none;
+    font-size: 18px;
+
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.App .thread-summary .total-value p {
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    margin-top: 10px;
+    color: #002B72;
+}
+
+.App .threads{
+    position: relative;
+    margin-top: 20px;
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+}
+
+.App .threads .thread-box{
+    position: relative;
+    width: 150px;
+    padding: 25px auto;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    border-radius: 15px;
+    border: none;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    font-size: 18px;
+}
+
+.App .threads .thread-box p{
+    position: relative;
+    font-size: 12px;
+    color: #002B72;
+}
+
+
+.App .threads .thread-box span{
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    padding: 5px 8px;
+    border: none;
+    border-radius: 5px;
+    background: #20c997;
+    font-size: 12px;
+    color: #fff;
+}
+
+.App .chart {
+    position: relative;
+    width: 99%;
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+
+.App .chart button {
+    position: absolute;
+    bottom: -25px;
+    right: 5px;
+    padding: 10px 15px;
+    border-radius: 15px;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    background: #002B72;
+}
+
+.App .form {
+    position: relative;
+    width: 80%;
+    height: max-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.App .form input {
+    position: relative;
+    width: 250px;
+    padding: 8px 15px;
+    font-size: 14px;
+    color: #262626;
+    margin-bottom: 5px;
+    border: 1px solid #262626;
+    border-radius: 10px;
+}
+
+.App .form button {
+    position: relative;
+    width: 250px;
+    padding: 8px 15px;
+    font-size: 14px;
+    color: #fff;
+    margin-bottom: 5px;
+    border: 1px solid #262626;
+    border-radius: 10px;
+    border: none;
+    background: #002B72;
+    cursor: pointer;
+
+}
+
+div table {
+    position: relative;
+    width: 80%;
+    margin-top: 20px;
+    margin-bottom: 50px;
+    display: table;
+    align-items: center;
+    justify-content: center;
+
+}
+
+div table tr {
+    width: 100%;
+}
+
+div table tr th,
+div table tr td {
+    padding: 8px 15px;
+    /* width: 100%; */
+    border: 1px solid #a8a8a8;
+    color: #002B72;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.App h2{
+    position: relative;
+    width: 100%;
+    padding: 15px;
+    margin: 15px auto;
+    margin-top: 35px;
+    text-align: center;
+    font-size: 25px;
+    color: #1F72B8;
 }
