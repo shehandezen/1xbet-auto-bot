@@ -158,6 +158,15 @@ function App() {
     },
   });
 
+  chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+    console.log('Message received from Service Worker:', message);
+
+    // Respond back to the service worker if needed
+    sendResponse({ response: "Message received" });
+
+    // Handle the message (e.g., update the DOM)
+   
+});
 
 
   const ws = useRef<WebSocket | null>(null);

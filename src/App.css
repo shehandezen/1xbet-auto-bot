@@ -290,4 +290,32 @@ div table tr td {
     text-align: center;
     font-size: 25px;
     color: #1F72B8;
+    margin-bottom: 5px;
+}
+
+.App p{
+    font-size: 16px;
+    color: #002B72;
+    margin-bottom: 50px;
+}
+
+.App .buttons {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+
+
+.App .buttons button {
+    position: relative;
+    margin-right: 15px;
+    border-radius: 5px;
+    border: none;
+    color: #fff;
+    padding: 8px 15px;
+    cursor: pointer;
+    
 }

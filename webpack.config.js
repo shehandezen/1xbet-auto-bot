@@ -1,59 +1,53 @@
-const path = require("path");
-const HTMLPlugin = require("html-webpack-plugin");
-const CopyPlugin = require("copy-webpack-plugin")
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const webpack = require('webpack');
 
 module.exports = {
-    entry: {
-        index: "./src/index.tsx"
-    },
-    mode: "production",
-    module: {
-        rules: [
-            {
-              test: /\.tsx?$/,
-               use: [
-                 {
-                  loader: "ts-loader",
-                   options: {
-                     compilerOptions: { noEmit: false },
-                    }
-                  }],
-               exclude: /node_modules/,
-            },
-            {
-              exclude: /node_modules/,
-              test: /\.css$/i,
-               use: [
-                  "style-loader",
-                  "css-loader"
-               ]
-            },
-        ],
-    },
-    plugins: [
-        new CopyPlugin({
-            patterns: [
-                { from: "manifest.json", to: "../manifest.json" },
-            ],
-        }),
-        ...getHtmlPlugins(["index"]),
+  mode: 'development',
+  entry: {
+    popup: './src/index.tsx',
+    background: './background.ts'
+  },
+  devtool: 'inline-source-map',
+  module: {
+    rules: [
+      {
+        test: /\.tsx?$/,
+        use: 'ts-loader',
+        exclude: /node_modules/,
+      },
+      {
+        test: /\.css$/i,
+        use: ['style-loader', 'css-loader'],
+      },
     ],
-    resolve: {
-        extensions: [".tsx", ".ts", ".js"],
-    },
-    output: {
-        path: path.join(__dirname, "dist/js"),
-        filename: "[name].js",
-    },
+  },
+  resolve: {
+    extensions: ['.tsx', '.ts', '.js'],
+  },
+  output: {
+    filename: '[name].js',
+    path: path.resolve(__dirname, 'dist'),
+    clean: true,
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: './public/index.html',
+      filename: 'popup.html',
+      chunks: ['popup'],
+    }),
+    new CopyWebpackPlugin({
+      patterns: [
+        { from: 'public/manifest.json', to: 'manifest.json' },
+        { from: 'public/content.js', to: 'content.js' },
+      ],
+    }),
+    new webpack.DefinePlugin({
+      'global.chrome': 'chrome'
+    })
+  ],
+  externals: {
+    chrome: 'chrome'
+  }
 };
-
-function getHtmlPlugins(chunks) {
-    return chunks.map(
-        (chunk) =>
-            new HTMLPlugin({
-                title: "React extension",
-                filename: `${chunk}.html`,
-                chunks: [chunk],
-            })
-    );
-}
