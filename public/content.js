@@ -156,7 +156,7 @@ window.onload = () => {
           console.log(['RESULT', activethread.thread, (record[4] == 'x1.01') ? 'win' : 'lost', record[0], record[1], record[2], record[3].slice(0, -4), record[4], record[5].slice(0, -4), record[6]])
 
           chrome.runtime.sendMessage(['RESULT', activethread.thread, (record[4] == 'x1.01') ? 'win' : 'lost', record[0], record[1], record[2], record[3].slice(0, -4), record[4], record[5].slice(0, -4), record[6]], (response) => {
-            activethread = 'NOT'
+            activethread.thread = 'NOT'
           })
 
         }, 1500)
