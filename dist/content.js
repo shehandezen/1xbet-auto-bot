@@ -65,7 +65,7 @@ window.onload = () => {
 
 
     // console.log(round)
-    if (message[0] == 'BET' && message[3] != null) {
+    if (message[0] == 'BET' ) {
       activethread.thread = message[1]
 
       console.log(message, activethread)
