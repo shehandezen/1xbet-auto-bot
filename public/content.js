@@ -65,7 +65,7 @@ window.onload = () => {
 
 
     // console.log(round)
-    if (message[0] == 'BET' && activethread.thread == 'NOT' && message[3] != null) {
+    if (message[0] == 'BET' && message[3] != null) {
       activethread.thread = message[1]
 
       console.log(message, activethread)
@@ -153,9 +153,9 @@ window.onload = () => {
             record.push(i.innerText)
           }
 
-          console.log(['RESULT', activethread.thread, (record[4] < record[6] ) ? 'win' : 'lost', record[0], record[1], record[2], record[3].slice(0, -4), record[4], record[5].slice(0, -4), record[6]])
+          console.log(['RESULT', activethread.thread, (parseFloat(record[4].slice(1,-1)) < parseFloat(record[6].slice(1,-1)) ) ? 'win' : 'lost', record[0], record[1], record[2], record[3].slice(0, -4),parseFloat(record[4].slice(1,-1)), record[5].slice(0, -4), parseFloat(record[6].slice(1,-1))])
 
-          chrome.runtime.sendMessage(['RESULT', activethread.thread, (record[4] < record[6]) ? 'win' : 'lost', record[0], record[1], record[2], record[3].slice(0, -4), record[4], record[5].slice(0, -4), record[6]], (response) => {
+          chrome.runtime.sendMessage(['RESULT', activethread.thread, (record[4] < record[6]) ? 'win' : 'lost', record[0], record[1], record[2], record[3].slice(0, -4), parseFloat(record[4].slice(1,-1)), record[5].slice(0, -4),parseFloat(record[6].slice(1,-1))], (response) => {
             activethread.thread = 'NOT'
           })
 
