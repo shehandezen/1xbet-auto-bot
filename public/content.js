@@ -75,6 +75,7 @@ window.onload = () => {
         baseStakeInput.autocomplete = 'on'
         maxStakeInput.autocomplete = 'on'
         autoOdd.autocomplete = 'on'
+        autoOdd.click()
       }, ClickDelay);
 
       setTimeout(function () {
@@ -104,17 +105,25 @@ window.onload = () => {
 
 
         // baseStakeInput.value = Math.round(parseInt(message[2]) * 100) / 100
+
+        // maxStakeInput.value = (Math.round(parseInt(message[2]) * 100) / 100) + 1
+        autoOdd.click()
+        autoOdd.focus()
+        autoOdd.setAttribute('value', `${message[3]}`)
+        autoOdd.value = `${message[3]}`
+        autoOdd.dispatchEvent(inputEvent);
+        autoOdd.dispatchEvent(changeEvent);
+        baseStakeInput.dispatchEvent(keydownEvent)
+        baseStakeInput.dispatchEvent(keyupEvent)
+        baseStakeInput.dispatchEvent(changeEvent);
+        autoOdd.blur();
+
         maxStakeInput.focus()
         maxStakeInput.setAttribute('value', `${(Math.round(parseInt(message[2]))) + 1}`)
         maxStakeInput.dispatchEvent(inputEvent);
         maxStakeInput.dispatchEvent(changeEvent);
         maxStakeInput.blur();
-        // maxStakeInput.value = (Math.round(parseInt(message[2]) * 100) / 100) + 1
-        autoOdd.focus()
-        autoOdd.setAttribute('value', message[3])
-        autoOdd.dispatchEvent(inputEvent);
-        autoOdd.dispatchEvent(changeEvent);
-        autoOdd.blur();
+        
 
         baseStakeInput.focus()
         baseStakeInput.setAttribute('value', `${Math.round(parseInt(message[2]))}`);
@@ -126,7 +135,7 @@ window.onload = () => {
         baseStakeInput.dispatchEvent(keyupEvent)
         baseStakeInput.dispatchEvent(changeEvent);
         baseStakeInput.blur();
-        autoOdd.value = message[3]
+      
       }, inputDelay);
 
       setTimeout(function () {
@@ -155,7 +164,7 @@ window.onload = () => {
 
           console.log(['RESULT', activethread.thread, (parseFloat(record[4].slice(1,-1)) < parseFloat(record[6].slice(1,-1)) ) ? 'win' : 'lost', record[0], record[1], record[2], record[3].slice(0, -4),parseFloat(record[4].slice(1,-1)), record[5].slice(0, -4), parseFloat(record[6].slice(1,-1))])
 
-          chrome.runtime.sendMessage(['RESULT', activethread.thread, (record[4] < record[6]) ? 'win' : 'lost', record[0], record[1], record[2], record[3].slice(0, -4), parseFloat(record[4].slice(1,-1)), record[5].slice(0, -4),parseFloat(record[6].slice(1,-1))], (response) => {
+          chrome.runtime.sendMessage(['RESULT', 'thread_1', (record[4] < record[6]) ? 'win' : 'lost', record[0], record[1], record[2], record[3].slice(0, -4), parseFloat(record[4].slice(1,-1)), record[5].slice(0, -4),parseFloat(record[6].slice(1,-1))], (response) => {
             activethread.thread = 'NOT'
           })
 
