@@ -65,7 +65,7 @@ window.onload = () => {
 
 
     // console.log(round)
-    if (message[0] == 'BET' && activethread.thread == 'NOT') {
+    if (message[0] == 'BET' && activethread.thread == 'NOT' && message[3] != null) {
       activethread.thread = message[1]
 
       console.log(message, activethread)
@@ -111,7 +111,7 @@ window.onload = () => {
         maxStakeInput.blur();
         // maxStakeInput.value = (Math.round(parseInt(message[2]) * 100) / 100) + 1
         autoOdd.focus()
-        autoOdd.setAttribute('value', '1.01')
+        autoOdd.setAttribute('value', message[3])
         autoOdd.dispatchEvent(inputEvent);
         autoOdd.dispatchEvent(changeEvent);
         autoOdd.blur();
@@ -153,9 +153,9 @@ window.onload = () => {
             record.push(i.innerText)
           }
 
-          console.log(['RESULT', activethread.thread, (record[4] == 'x1.01') ? 'win' : 'lost', record[0], record[1], record[2], record[3].slice(0, -4), record[4], record[5].slice(0, -4), record[6]])
+          console.log(['RESULT', activethread.thread, (record[4] < record[6] ) ? 'win' : 'lost', record[0], record[1], record[2], record[3].slice(0, -4), record[4], record[5].slice(0, -4), record[6]])
 
-          chrome.runtime.sendMessage(['RESULT', activethread.thread, (record[4] == 'x1.01') ? 'win' : 'lost', record[0], record[1], record[2], record[3].slice(0, -4), record[4], record[5].slice(0, -4), record[6]], (response) => {
+          chrome.runtime.sendMessage(['RESULT', activethread.thread, (record[4] < record[6]) ? 'win' : 'lost', record[0], record[1], record[2], record[3].slice(0, -4), record[4], record[5].slice(0, -4), record[6]], (response) => {
             activethread.thread = 'NOT'
           })
 
