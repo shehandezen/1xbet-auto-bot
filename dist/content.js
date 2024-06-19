@@ -126,7 +126,7 @@ window.onload = () => {
         baseStakeInput.dispatchEvent(keyupEvent)
         baseStakeInput.dispatchEvent(changeEvent);
         baseStakeInput.blur();
-        // autoOdd.value = 1.01
+        autoOdd.value = message[3]
       }, inputDelay);
 
       setTimeout(function () {
